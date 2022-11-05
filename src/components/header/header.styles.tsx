@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const HeaderContainer = styled.div`
   display: flex;
@@ -8,13 +9,14 @@ export const HeaderContainer = styled.div`
   margin: 0;
 `;
 
-export const Logo = styled.h3`
-  font-family: "Montserrat";
-  font-style: normal;
-  font-weight: 600;
-  font-size: 24px;
-  line-height: 30px;
-  color: #3177ff;
+export const LogoContainer = styled(Link)`
+  height: 35px;
+
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
 `;
 
 export const HeaderItemList = styled.ul`

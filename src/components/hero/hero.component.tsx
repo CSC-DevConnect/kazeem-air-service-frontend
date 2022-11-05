@@ -1,5 +1,5 @@
 import React from "react";
-import { HeroBox, HeroContainer, HeroContent, HeroFooter } from "./hero.styles";
+import { HeroBox, HeroContainer, HeroContent, HeroFooter, ButtonBox } from "./hero.styles";
 import Plane from "../../assets/Vector.png";
 import DownArrow from "../../assets/Polygon 1.png";
 import User from "../../assets/Vector (2).png";
@@ -35,9 +35,11 @@ export const Hero = () => {
             <input type="text" placeholder="To" />
             <input type="date" title="From" />
             <input type="date" title="To" />
-            <button>
-              <FiSearch />
-            </button>
+            <ButtonBox>
+              <button>
+                <FiSearch />
+              </button>
+            </ButtonBox>
           </form>
           <ul>
             <li>

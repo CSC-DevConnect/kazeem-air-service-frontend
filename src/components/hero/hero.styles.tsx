@@ -6,7 +6,7 @@ export const HeroContainer = styled.div`
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: 85vh;
+  height: 80vh;
 `;
 
 export const HeroContent = styled.div`
@@ -68,11 +68,30 @@ export const HeroBox = styled.div`
       background: transparent;
       padding: 10px;
       color: #fff;
+      width: 100%;
 
       ::placeholder {
         color: #fff;
       }
     }
+  }
+`;
+
+export const ButtonBox = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  height: 100%;
+  background: black;
+  border: 2px solid #000;
+
+  button {
+    margin: auto;
+    color: #fff;
+    font-size: 1.5rem;
+    background: transparent;
+    cursor: pointer;
   }
 `;
 

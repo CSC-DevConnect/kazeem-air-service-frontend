@@ -3,17 +3,18 @@ import {
   HeaderContainer,
   HeaderItem,
   HeaderItemList,
-  Logo,
+  LogoContainer,
 } from "./header.styles";
 import { FiSearch } from "react-icons/fi";
 import { CgProfile } from "react-icons/cg";
+import KazeemLogo from "../../assets/Group 1.png";
 
 export const Header = () => {
   return (
     <HeaderContainer>
-      <Logo>
-        Kazeem Air
-      </Logo>
+      <LogoContainer to="/">
+        <img src={KazeemLogo} alt="logo" />
+      </LogoContainer>
       <HeaderItemList>
         <HeaderItem>
           <FiSearch />
