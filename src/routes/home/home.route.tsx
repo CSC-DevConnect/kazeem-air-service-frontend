@@ -1,5 +1,5 @@
 import React from "react";
-import { Hero, Trip } from "../../components";
+import { Filght, Hero, Offer, Trip } from "../../components";
 import { HomeContainer } from "./home.styles";
 
 export const Home = () => {
@@ -7,6 +7,8 @@ export const Home = () => {
     <HomeContainer>
       <Hero />
       <Trip />
+      <Filght />
+      <Offer />
     </HomeContainer>
   );
 };
