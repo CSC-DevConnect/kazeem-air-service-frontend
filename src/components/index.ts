@@ -5,3 +5,4 @@ export * from "./trip/trip.component";
 export * from "./flight/flight.component";
 export * from "./offer/offer.component";
 export * from "./mobile/mobile-nav.component";
+export * from "./footer/footer.component";
