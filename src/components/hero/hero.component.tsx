@@ -7,6 +7,7 @@ import Economy from "../../assets/Vector (1).png";
 import Booking from "../../assets/Vector (3).png";
 import AlarmAdd from "../../assets/carbon_alarm-add.png";
 import { FiSearch } from "react-icons/fi";
+import { airlines } from "../../utils/airlines";
 
 export const Hero = () => {
   return (
@@ -31,8 +32,18 @@ export const Hero = () => {
             </li>
           </ul>
           <form>
-            <input type="text" placeholder="From" />
-            <input type="text" placeholder="To" />
+            <select>
+              <label>From:</label>
+              {airlines.map((airline) => (
+                <option>{airline.airport_name}</option>
+              ))}
+            </select>
+            <select>
+              <label>To:</label>
+              {airlines.map((airline) => (
+                <option>{airline.airport_name}</option>
+              ))}
+            </select>
             <input type="date" title="From" />
             <input type="date" title="To" />
             <ButtonBox>

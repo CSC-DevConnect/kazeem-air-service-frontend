@@ -60,7 +60,11 @@ export const HeroBox = styled.div`
     align-items: center;
     margin: 15px 18px 0;
     background: #a7c5ff;
+    margin: 10px;
 
+    select {
+      width: 70%;
+    }
     input {
       border: none;
       outline: none;
