@@ -1,3 +1,4 @@
+import moment from "moment";
 import {
   FlightListContainer,
   FlightListWrapper,
@@ -19,38 +20,44 @@ export const FlightList = ({ flights }: any) => {
           <FlightCard key={flight.id} to={`/${flight.id}`}>
             <FlightCardHeader>
               <h3>Departure Journey</h3>
-              <p>{flight.updated_at}</p>
+              <p>{moment(flight.departure_date).format("MMM Do YYYY")}</p>
             </FlightCardHeader>
             <FlightCardBody>
               <FlightLogo>
                 <img
-                  src={flight.total_emissions_kg}
-                  alt={flight.total_emissions_kg}
+                  src={
+                    flight.slices[0].segments[0].operating_carrier
+                      .logo_symbol_url
+                  }
+                  alt={flight.slices[0].segments[0].operating_carrier.name}
                 />
               </FlightLogo>
               <FlightOrigin>
-                {flight.slices.map((slice: any) => (
-                  <div key={slice.id}>
-                    <h3>{slice.origin.timezone}</h3>
-                    <p>{slice.origin.name}</p>
-                  </div>
-                ))}
+                <h2>
+                  {moment(flight.slices[0].segments[0].departing_at).format(
+                    "h:mm"
+                  )}
+                </h2>
+                <p>{flight.slices[0].origin.name}</p>
               </FlightOrigin>
               <FlightDuration>
-                {flight.slices.map((slice: any) => (
-                  <p key={slice.id}>{slice.duration}</p>
-                ))}
+                <p>
+                  {flight.slices[0].duration.split("")[2] +
+                    "hr " +
+                    flight.slices[0].duration.slice(4, 5) +
+                    "mins"}
+                </p>
               </FlightDuration>
               <FlightDestination>
-                {flight.slices.map((slice: any) => (
-                  <div key={slice.id}>
-                    <h3>{slice.destination.timezone}</h3>
-                    <p>{slice.destination.name}</p>
-                  </div>
-                ))}
+                <h2>
+                  {moment(flight.slices[0].segments[0].arriving_at).format(
+                    "h:mm"
+                  )}
+                </h2>
+                <p>{flight.slices[0].destination.name}</p>
               </FlightDestination>
               <FlightPrice>
-                <h2>{flight.total_amount}</h2>
+                <h2>${flight.total_amount}</h2>
               </FlightPrice>
             </FlightCardBody>
           </FlightCard>

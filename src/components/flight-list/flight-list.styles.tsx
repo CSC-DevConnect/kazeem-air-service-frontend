@@ -24,26 +24,81 @@ export const FlightCard = styled(Link)`
   border: 1px solid #aac7ff;
   padding: 20px;
   border-radius: 10px;
+  color: #000;
 `;
 
 export const FlightCardHeader = styled.div`
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  text-align: center;
+  margin: 0 auto 10px;
+
+  h3 {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 24px;
+    text-transform: capitalize;
+  }
 `;
 
 export const FlightCardBody = styled.div`
   display: flex;
-  justify-content: space-around;
-  align-items: center;
+  margin-top: 20px;
+
+  & > div {
+    padding: 0 5px;
+    width: 100%;
+  }
 `;
 
-export const FlightLogo = styled.div``;
+export const FlightLogo = styled.div`
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
 
-export const FlightOrigin = styled.div``;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+`;
 
-export const FlightDuration = styled.div``;
+export const FlightOrigin = styled.div`
+  text-align: left;
 
-export const FlightDestination = styled.div``;
+  p {
+    font-size: 12px;
+    text-transform: capitalize;
+    margin-top: 12px;
+  }
+`;
 
-export const FlightPrice = styled.div``;
+export const FlightDuration = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  p {
+    font-weight: 500;
+    font-size: 9px;
+    text-transform: capitalize;
+  }
+`;
+
+export const FlightDestination = styled.div`
+  text-align: left;
+
+  p {
+    font-size: 12px;
+    text-transform: capitalize;
+    margin-top: 12px;
+  }
+`;
+
+export const FlightPrice = styled.div`
+  h2 {
+    line-height: 30px;
+  }
+`;

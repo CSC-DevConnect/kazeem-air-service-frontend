@@ -39,7 +39,7 @@ export const Book = () => {
 
   const getAirlines = async () => {
     const response = await axios.get(
-      "http://localhost:3000/api/v1/flight/airlines"
+      "http://localhost:3000/api/v1/flight/airports?countryCode=NG"
     );
     setAirlines(response.data.data);
   };
@@ -73,11 +73,11 @@ export const Book = () => {
           "http://localhost:3000/api/v1/flight/two_way_offer",
           {
             cabin_class,
-            origin: "LHR",
-            destination: "JFK",
+            origin,
+            destination,
             departure_date,
-            return_origin: "LHR",
-            return_destination: "JFK",
+            return_origin: origin,
+            return_destination: destination,
             return_departure_date,
           }
         );
@@ -86,8 +86,8 @@ export const Book = () => {
           "http://localhost:3000/api/v1/flight/offer",
           {
             cabin_class,
-            origin: "LHR",
-            destination: "JFK",
+            origin,
+            destination,
             departure_date,
           }
         );
@@ -96,39 +96,6 @@ export const Book = () => {
     } catch (error) {
       console.log(error);
     }
-    // try {
-    //   switch (tripType) {
-    //     case Trip_Type.Round_trip:
-    //       response = await axios.post(
-    //         "http://localhost:3000/api/v1/flight/two_way_offer",
-    //         {
-    //           cabin_class,
-    //           origin,
-    //           destination,
-    //           departure_date,
-    //           return_origin: origin,
-    //           return_destination: destination,
-    //           return_departure_date,
-    //         }
-    //       );
-    //       break;
-    //     case Trip_Type.One_way:
-    //       response = await axios.post(
-    //         "http://localhost:3000/api/v1/flight/offer",
-    //         JSON.stringify({
-    //           cabin_class,
-    //           origin: "LHR",
-    //           destination: "JFK",
-    //           departure_date,
-    //         })
-    //       );
-    //       break;
-    //     default:
-    //       break;
-    //   }
-    // } catch (error) {
-    //   console.log(error);
-    // }
   };
 
   return (
