@@ -6,19 +6,17 @@ import { NavigationContainer } from "./navigation.styles";
 
 export const Navigation = () => {
   const [toggle, setToggle] = React.useState(false);
-  const [togglePosition, setTogglePostion] = React.useState(false);
+  // const [togglePosition, setTogglePostion] = React.useState(false);
 
   const width = useCheckMobileScreen();
 
-  console.log("width", width);
-
-  const toggleMenuPosition = () => {
-    if (window.scrollY >= 80) {
-      setTogglePostion(true);
-    } else {
-      setTogglePostion(false);
-    }
-  };
+  // const toggleMenuPosition = () => {
+  //   if (window.scrollY >= 80) {
+  //     setTogglePostion(true);
+  //   } else {
+  //     setTogglePostion(false);
+  //   }
+  // };
 
   const handleToggle = () => {
     setToggle(!toggle);

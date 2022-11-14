@@ -12,7 +12,7 @@ export const NavBar = () => {
           <NavItemLink to="/#manage">manage</NavItemLink>
         </NavItem>
         <NavItem>
-          <NavItemLink to="/#book">book</NavItemLink>
+          <NavItemLink to="/book">book</NavItemLink>
         </NavItem>
         <NavItem>
           <NavItemLink to="/#about">about us</NavItemLink>

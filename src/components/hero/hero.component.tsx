@@ -1,19 +1,28 @@
 import React from "react";
-import { HeroBox, HeroContainer, HeroContent, HeroFooter, ButtonBox } from "./hero.styles";
-import Plane from "../../assets/Vector.png";
-import DownArrow from "../../assets/Polygon 1.png";
-import User from "../../assets/Vector (2).png";
-import Economy from "../../assets/Vector (1).png";
-import Booking from "../../assets/Vector (3).png";
-import AlarmAdd from "../../assets/carbon_alarm-add.png";
-import { FiSearch } from "react-icons/fi";
-import { airlines } from "../../utils/airlines";
+import {
+  // HeroBox,
+  // ButtonBox,
+  HeroContainer,
+  HeroContent,
+  HeroFooter,
+} from "./hero.styles";
+// import Plane from "../../assets/Vector.png";
+// import DownArrow from "../../assets/Polygon 1.png";
+// import User from "../../assets/Vector (2).png";
+// import Economy from "../../assets/Vector (1).png";
+// import Booking from "../../assets/Vector (3).png";
+// import AlarmAdd from "../../assets/carbon_alarm-add.png";
+// import { FiSearch } from "react-icons/fi";
+// import { airlines } from "../../utils/airlines";
+import { useNavigate } from "react-router-dom";
 
 export const Hero = () => {
+  const navigate = useNavigate();
+
   return (
     <HeroContainer>
       <HeroContent>
-        <HeroBox>
+        {/* <HeroBox>
           <ul>
             <li>
               <img src={Plane} alt="plane" />
@@ -32,16 +41,17 @@ export const Hero = () => {
             </li>
           </ul>
           <form>
+            {" "}
+            <label>From:</label>
             <select>
-              <label>From:</label>
               {airlines.map((airline) => (
-                <option>{airline.airport_name}</option>
+                <option key={airline.IATA_code}>{airline.airport_name}</option>
               ))}
             </select>
+            <label>To:</label>
             <select>
-              <label>To:</label>
               {airlines.map((airline) => (
-                <option>{airline.airport_name}</option>
+                <option key={airline.IATA_code}>{airline.airport_name}</option>
               ))}
             </select>
             <input type="date" title="From" />
@@ -66,14 +76,14 @@ export const Hero = () => {
               <span>charter flight</span>
             </li>
           </ul>
-        </HeroBox>
+        </HeroBox> */}
         <HeroFooter>
           <h2>Connect with your family and friends</h2>
           <p>
             Get your Flight booked today and spend quality time with friends an
             family.
           </p>
-          <button>book now</button>
+          <button onClick={() => navigate("/book")}>book now</button>
         </HeroFooter>
       </HeroContent>
     </HeroContainer>

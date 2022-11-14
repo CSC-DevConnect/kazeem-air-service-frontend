@@ -62,10 +62,11 @@ export const HeroBox = styled.div`
     background: #a7c5ff;
     margin: 10px;
 
-    select {
+    /* select {
       width: 70%;
-    }
-    input {
+    } */
+
+    input, select {
       border: none;
       outline: none;
       border-right: 2px solid #ecebeb;
@@ -77,6 +78,10 @@ export const HeroBox = styled.div`
       ::placeholder {
         color: #fff;
       }
+    }
+
+    option {
+      background: gray;
     }
   }
 `;
