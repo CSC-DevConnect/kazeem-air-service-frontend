@@ -9,7 +9,7 @@ import AlarmAdd from "../../assets/carbon_alarm-add.png";
 import { FiSearch } from "react-icons/fi";
 import axios from "axios";
 import React, { ChangeEvent, ChangeEventHandler } from "react";
-import { BookNowForm, FlightList } from "../../components";
+import { FlightList } from "../../components";
 
 enum Cabin_Class {
   "Economy" = "economy",
@@ -93,6 +93,7 @@ export const Book = () => {
         );
       }
       setAllFlights(response.data.flight);
+      console.log(response.data)
     } catch (error) {
       console.log(error);
     }
@@ -101,12 +102,11 @@ export const Book = () => {
   return (
     <BookContainer>
       <BookHero>
-        <h2>book</h2>
+        {/* <h2>book</h2>
         <p>
           Plan your next shopping and Experience the marketplaces of the world
           by booking your exceptional journey with the World's Best Airline.{" "}
-        </p>
-      </BookHero>
+        </p> */}
       <HeroContent>
         <BookBox>
           <form onSubmit={handleSubmit}>
@@ -196,6 +196,7 @@ export const Book = () => {
           </form>
         </BookBox>
       </HeroContent>
+      </BookHero>
       {allFlights.length > 0 && <FlightList flights={allFlights} />}
     </BookContainer>
   );

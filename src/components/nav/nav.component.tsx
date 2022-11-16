@@ -21,7 +21,7 @@ export const NavBar = () => {
           <NavItemLink to="/#help">help</NavItemLink>
         </NavItem>
         <NavItem>
-          <NavItemLink to="/#signup">sign up</NavItemLink>
+          <NavItemLink to="/signup">sign up</NavItemLink>
         </NavItem>
       </NavItemList>
     </NavContainer>
