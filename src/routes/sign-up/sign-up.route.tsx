@@ -12,7 +12,12 @@ import signupImage from "../../assets/signup.png";
 
 export const SignUp = () => {
   const [formValues, setFormValues] = React.useState({
-    name: "",
+    fullName: "",
+    email: "",
+    password: "",
+    country: "",
+    phoneNumber: "",
+    gender: "",
   });
 
   const handleChange: ChangeEventHandler = (
@@ -22,7 +27,8 @@ export const SignUp = () => {
     setFormValues({ ...formValues, [name]: value });
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
     console.log(formValues);
   };
 
@@ -34,7 +40,7 @@ export const SignUp = () => {
             <FormTitle>Create an account</FormTitle>
             <input
               type="text"
-              name="fullname"
+              name="fullName"
               placeholder="Username"
               onChange={handleChange}
             />
@@ -45,27 +51,27 @@ export const SignUp = () => {
               onChange={handleChange}
             />
             <input
-              type="email"
-              name=""
-              placeholder="Email Address"
-              onChange={handleChange}
-            />
-            <input
-              type="email"
-              name=""
-              placeholder="Email Address"
-              onChange={handleChange}
-            />
-            <input
-              type="email"
-              name=""
-              placeholder="Email Address"
-              onChange={handleChange}
-            />
-            <input
               type="password"
-              name=""
+              name="password"
               placeholder="Create Password"
+              onChange={handleChange}
+            />
+            <input
+              type="test"
+              name="country"
+              placeholder="Country"
+              onChange={handleChange}
+            />
+            <input
+              type="number"
+              name="number"
+              placeholder="Phone Number"
+              onChange={handleChange}
+            />
+            <input
+              type="text"
+              name="gender"
+              placeholder="Gender"
               onChange={handleChange}
             />
             <SignUpButton
