@@ -10,6 +10,7 @@ import { FiSearch } from "react-icons/fi";
 import axios from "axios";
 import React, { ChangeEvent, ChangeEventHandler } from "react";
 import { FlightList } from "../../components";
+import { BASE_URL } from "../../constant";
 
 enum Cabin_Class {
   "Economy" = "economy",
@@ -39,7 +40,7 @@ export const Book = () => {
 
   const getAirlines = async () => {
     const response = await axios.get(
-      "http://localhost:3000/api/v1/flight/airports?countryCode=NG"
+      `${BASE_URL}/flight/airports?countryCode=NG`
     );
     setAirlines(response.data.data);
   };
@@ -65,12 +66,12 @@ export const Book = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
+    
     let response;
     try {
       if (tripType === Trip_Type.Round_trip) {
         response = await axios.post(
-          "http://localhost:3000/api/v1/flight/two_way_offer",
+          `${BASE_URL}/flight/two_way_offer`,
           {
             cabin_class,
             origin,
@@ -83,7 +84,7 @@ export const Book = () => {
         );
       } else {
         response = await axios.post(
-          "http://localhost:3000/api/v1/flight/offer",
+          `${BASE_URL}/flight/offer`,
           {
             cabin_class,
             origin,

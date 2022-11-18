@@ -37,9 +37,20 @@ export const SignUp = () => {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     try {
-      const url = `${BASE_URL}/register`;
-      const response = await axios.post(url, formValues);
-      console.log(response);
+      console.log(formValues)
+      const payload = {
+        fullName: formValues.fullName,
+        email: formValues.email,
+        password: formValues.password,
+        country: formValues.country,
+        phoneNumber: formValues.phoneNumber,
+        gender: formValues.gender,
+      }
+
+      console.log(payload)
+      const url = `${BASE_URL}/auth/register`;
+      const response = await axios.post(url, payload);
+      console.log(response.data);
       navigate('/signin')
     } catch (error) {
       console.log(error);
@@ -74,13 +85,13 @@ export const SignUp = () => {
               onChange={handleChange}
             />
             <input
-              type="test"
+              type="text"
               name="country"
               placeholder="Country"
               onChange={handleChange}
             />
             <input
-              type="number"
+              type="text"
               name="phoneNumber"
               placeholder="Phone Number"
               onChange={handleChange}
@@ -93,7 +104,6 @@ export const SignUp = () => {
             />
             <SignUpButton
               type="submit"
-              name=""
               value="Sign Up"
               onClick={handleSubmit}
             />
