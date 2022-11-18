@@ -13,6 +13,7 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { BASE_URL } from "../../constant";
+import { useNavigate } from "react-router-dom";
 
 export const SignUp = () => {
   const [formValues, setFormValues] = React.useState({
@@ -23,6 +24,8 @@ export const SignUp = () => {
     phoneNumber: "",
     gender: "",
   });
+
+  const navigate = useNavigate();
 
   const handleChange: ChangeEventHandler = (
     e: ChangeEvent<HTMLInputElement>
@@ -37,6 +40,7 @@ export const SignUp = () => {
       const url = `${BASE_URL}/register`;
       const response = await axios.post(url, formValues);
       console.log(response);
+      navigate('/signin')
     } catch (error) {
       console.log(error);
       toast.error("An error occured!", {
