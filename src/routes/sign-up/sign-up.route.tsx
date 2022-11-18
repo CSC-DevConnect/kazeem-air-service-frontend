@@ -9,6 +9,10 @@ import {
   SignUpContent,
 } from "./sign-up.styles";
 import signupImage from "../../assets/signup.png";
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { BASE_URL } from "../../constant";
 
 export const SignUp = () => {
   const [formValues, setFormValues] = React.useState({
@@ -27,9 +31,18 @@ export const SignUp = () => {
     setFormValues({ ...formValues, [name]: value });
   };
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
-    console.log(formValues);
+    try {
+      const url = `${BASE_URL}/register`;
+      const response = await axios.post(url, formValues);
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+      toast.error("An error occured!", {
+        position: "top-right",
+      });
+    }
   };
 
   return (
@@ -64,7 +77,7 @@ export const SignUp = () => {
             />
             <input
               type="number"
-              name="number"
+              name="phoneNumber"
               placeholder="Phone Number"
               onChange={handleChange}
             />
@@ -89,6 +102,7 @@ export const SignUp = () => {
           <img src={signupImage} alt="" />
         </ImageBox>
       </SignUpContent>
+      <ToastContainer />
     </SignUpContainer>
   );
 };
