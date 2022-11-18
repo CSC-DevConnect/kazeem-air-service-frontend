@@ -1,37 +1,42 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
+import {
+  FormContainer,
+  FormTitle,
+  ImageBox,
+  SignUpButton,
+  SignUpContainer,
+  SignUpContent,
+} from "./sign-up.styles";
+import signupImage from "../../assets/signup.png";
 
 export const SignUp = () => {
   return (
-    <div>
-      <div>
-        <div>
-          <h1>Get Started</h1>
-        </div>
-        <div>
+    <SignUpContainer>
+      <SignUpContent>
+        <FormContainer>
           <form>
-            <div>
-              <input type="text" name="fullname" placeholder="Full Name" />
-              <input type="email" name="email" placeholder="Email" />
-              <input type="password" name="password" placeholder="Password" />
-              <input type="date" name="dob" placeholder="dob" />
-              <input type="number" name="number" placeholder="Contact Number" />
-              <span>Gender</span>
-              <label className="container">
-                GEN
-                <input type="radio" name="radio" checked />
-                <span className="check"></span>
-              </label>
-              <label className="container">
-                OBC
-                <input type="radio" name="radio" />
-                <span className="check"></span>
-              </label>
-            </div>
+            <FormTitle>Create an account</FormTitle>
+            <input type="text" name="" placeholder="Username" />
+            <input type="email" name="" placeholder="Email Address" />
+            <input type="email" name="" placeholder="Email Address" />
+            <input type="email" name="" placeholder="Email Address" />
+            <input type="email" name="" placeholder="Email Address" />
+            <input type="password" name="" placeholder="Create Password" />
+            <input type="password" name="" placeholder="Confirm Password" />
+            <SignUpButton type="submit" name="" value="Sign Up" />
+            <p>
+              Already have an account ?<a href="/login">Sign in.</a>
+            </p>
           </form>
-
-          <div></div>
-        </div>
-      </div>
-    </div>
+        </FormContainer>
+        <ImageBox>
+          <img
+            src={signupImage}
+            alt=""
+          />
+        </ImageBox>
+      </SignUpContent>
+    </SignUpContainer>
   );
 };
