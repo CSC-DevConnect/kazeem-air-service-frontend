@@ -1,6 +1,14 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Book, BookDetails, Home, Navigation, SignIn, SignUp } from "./routes";
+import {
+  Book,
+  BookDetails,
+  Dashboard,
+  Home,
+  Navigation,
+  SignIn,
+  SignUp,
+} from "./routes";
 
 function App() {
   return (
@@ -8,6 +16,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Navigation />}>
           <Route index element={<Home />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/book" element={<Book />} />
           <Route path="/:bookId" element={<BookDetails />} />
         </Route>
