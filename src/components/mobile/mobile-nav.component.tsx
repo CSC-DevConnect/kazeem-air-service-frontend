@@ -43,7 +43,7 @@ export const MobileNav: React.FC<NavigationProps> = ({
           <MobileNavLink to="/#manage">Manage</MobileNavLink>
         </MobileNavItem>
         <MobileNavItem>
-          <MobileNavLink to="/#book">Book</MobileNavLink>
+          <MobileNavLink to="/book">Book</MobileNavLink>
         </MobileNavItem>
         <MobileNavItem>
           <MobileNavLink to="/#about">About Us</MobileNavLink>
@@ -52,7 +52,7 @@ export const MobileNav: React.FC<NavigationProps> = ({
           <MobileNavLink to="/#help">Help</MobileNavLink>
         </MobileNavItem>
         <MobileNavItem>
-          <MobileNavLink to="/#signup">Sign Up</MobileNavLink>
+          <MobileNavLink to="/signup">Sign Up</MobileNavLink>
         </MobileNavItem>
       </MobileNavMenu>
     </MobileNavContainer>

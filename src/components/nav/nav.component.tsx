@@ -1,7 +1,7 @@
 import React from "react";
 import { NavContainer, NavItem, NavItemLink, NavItemList } from "./nav.styles";
 
-export const NavBar = () => {
+export const NavBar = ({ currentUser }: any) => {
   return (
     <NavContainer>
       <NavItemList>
@@ -20,9 +20,13 @@ export const NavBar = () => {
         <NavItem>
           <NavItemLink to="/#help">help</NavItemLink>
         </NavItem>
-        <NavItem>
-          <NavItemLink to="/signup">sign up</NavItemLink>
-        </NavItem>
+        {currentUser ? (
+          ""
+        ) : (
+          <NavItem>
+            <NavItemLink to="/signup">sign up</NavItemLink>
+          </NavItem>
+        )}
       </NavItemList>
     </NavContainer>
   );

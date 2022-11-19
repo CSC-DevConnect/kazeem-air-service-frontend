@@ -16,13 +16,37 @@ import TimeTraceker from "../../assets/arcticons_simple-time-tracker.png";
 import Miles from "../../assets/game-icons_path-distance.png";
 import Duration from "../../assets/game-icons_duration.png";
 import RockingChair from "../../assets/game-icons_rocking-chair.png";
+import { useUserContext } from "../../context/userContext";
+import { Navigate } from "react-router-dom";
+import axios from "axios";
+import React from "react";
+import { User } from "../../context/context-types";
 
 export const Dashboard = () => {
-  return (
+  const { currentUser } = useUserContext();
+  const [profile, setProfile] = React.useState<User>();
+
+  const getUserProfile = async () => {
+    const response = await axios.get(
+      `https://kazeem-air-service-production.up.railway.app/api/v1/users/${currentUser?.user.id}`,
+      {
+        headers: {
+          Authorization: `Bearer ${currentUser?.tokens.access.token}`,
+        },
+      }
+    );
+    setProfile(response.data);
+  };
+
+  React.useEffect(() => {
+    getUserProfile();
+  }, []);
+
+  return currentUser ? (
     <DashboardContainer>
       <DashboardHero>
         <DashboardWelcomeText>
-          Welcome, <span>John Doe</span>
+          Welcome, <span>{profile?.fullName}</span>
         </DashboardWelcomeText>
         <DashboardWelcomeNote>
           <h3>Have access to the best travel experience</h3>
@@ -90,5 +114,7 @@ export const Dashboard = () => {
         </DashboardContentBtnOutline>
       </DashboardContent>
     </DashboardContainer>
+  ) : (
+    <Navigate to="/signin" />
   );
 };

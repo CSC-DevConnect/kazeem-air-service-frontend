@@ -9,7 +9,7 @@ import { FiSearch } from "react-icons/fi";
 import { CgProfile } from "react-icons/cg";
 import KazeemLogo from "../../assets/Group 1.png";
 
-export const Header = () => {
+export const Header = ({ currentUser }: any) => {
   return (
     <HeaderContainer>
       <LogoContainer to="/">
@@ -20,8 +20,7 @@ export const Header = () => {
           <FiSearch />
         </HeaderItem>
         <HeaderItem>
-          <a href="/login">Login</a>
-          <CgProfile />
+          {currentUser ? <CgProfile /> : <a href="/signin">Login</a>}
         </HeaderItem>
       </HeaderItemList>
     </HeaderContainer>

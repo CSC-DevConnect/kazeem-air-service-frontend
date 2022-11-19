@@ -1,4 +1,4 @@
-import React, { ChangeEvent, ChangeEventHandler } from "react";
+import React, { ChangeEvent, ChangeEventHandler, useContext } from "react";
 import {
   SignInAlt,
   SignInAltText,
@@ -15,12 +15,15 @@ import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { BASE_URL } from "../../constant";
+import { useUserContext } from "../../context/userContext";
 
 export const SignIn = () => {
   const [formValues, setFormValues] = React.useState({
     email: "",
     password: "",
   });
+
+  const { setCurrentUser } = useUserContext();
 
   const navigate = useNavigate();
 
@@ -34,11 +37,12 @@ export const SignIn = () => {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     try {
-      console.log(formValues)
+      console.log(formValues);
       const url = `${BASE_URL}/auth/login`;
       const response = await axios.post(url, formValues);
-      console.log(response.data)
-      if (response.status === 200) navigate('/book')
+      console.log(response.data);
+      setCurrentUser(response.data);
+      if (response.status === 200) navigate("/dashboard");
     } catch (error) {
       console.log(error);
       toast.error("An error occured!", {
@@ -56,17 +60,29 @@ export const SignIn = () => {
         <SignInForm>
           <SignInFormInput>
             <MdOutlineAlternateEmail />
-            <input type="text" placeholder="Email" name="email" onChange={handleChange} />
+            <input
+              type="text"
+              placeholder="Email"
+              name="email"
+              onChange={handleChange}
+            />
           </SignInFormInput>
           <SignInFormInput>
             <MdOutlineLock />
-            <input type="password" placeholder="Password" name="password" onChange={handleChange} />
+            <input
+              type="password"
+              placeholder="Password"
+              name="password"
+              onChange={handleChange}
+            />
           </SignInFormInput>
           <Link to="/forgot-password" className="forgot-password">
             forgot password?
           </Link>
           <SignInFormButton>
-            <button type="submit" onClick={handleSubmit}>login</button>
+            <button type="submit" onClick={handleSubmit}>
+              login
+            </button>
           </SignInFormButton>
         </SignInForm>
       </SignInWrapper>

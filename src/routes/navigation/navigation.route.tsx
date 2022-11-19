@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import { Outlet } from "react-router-dom";
 import { useCheckMobileScreen } from "../../common";
 import { Header, MobileNav, NavBar } from "../../components";
+import { useUserContext } from "../../context/userContext";
 import { NavigationContainer } from "./navigation.styles";
 
 export const Navigation = () => {
@@ -26,6 +27,7 @@ export const Navigation = () => {
   //   window.addEventListener("scroll", toggleMenuPosition);
   // }),
   //   [togglePosition];
+  const { currentUser } = useUserContext();
 
   return (
     <Fragment>
@@ -33,8 +35,8 @@ export const Navigation = () => {
         <MobileNav toggle={toggle} handleToggle={handleToggle} />
       ) : (
         <NavigationContainer>
-          <Header />
-          <NavBar />
+          <Header currentUser={currentUser} />
+          <NavBar currentUser={currentUser} />
         </NavigationContainer>
       )}
       <Outlet />
