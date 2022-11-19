@@ -38,20 +38,9 @@ export const SignUp = () => {
     e.preventDefault();
     try {
       console.log(formValues)
-      const payload = {
-        fullName: formValues.fullName,
-        email: formValues.email,
-        password: formValues.password,
-        country: formValues.country,
-        phoneNumber: formValues.phoneNumber,
-        gender: formValues.gender,
-      }
-
-      console.log(payload)
       const url = `${BASE_URL}/auth/register`;
-      const response = await axios.post(url, payload);
-      console.log(response.data);
-      navigate('/signin')
+      const response = await axios.post(url, formValues);
+      if (response.status === 201) navigate('/signin')
     } catch (error) {
       console.log(error);
       toast.error("An error occured!", {
