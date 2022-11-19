@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ChangeEvent, ChangeEventHandler } from "react";
 import {
   SignInAlt,
   SignInAltText,
@@ -10,9 +10,42 @@ import {
   SignInWrapper,
 } from "./sign-in.styles";
 import { MdOutlineAlternateEmail, MdOutlineLock } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { BASE_URL } from "../../constant";
 
 export const SignIn = () => {
+  const [formValues, setFormValues] = React.useState({
+    email: "",
+    password: "",
+  });
+
+  const navigate = useNavigate();
+
+  const handleChange: ChangeEventHandler = (
+    e: ChangeEvent<HTMLInputElement>
+  ) => {
+    const { name, value } = e.target;
+    setFormValues({ ...formValues, [name]: value });
+  };
+
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+    try {
+      console.log(formValues)
+      const url = `${BASE_URL}/auth/login`;
+      const response = await axios.post(url, formValues);
+      console.log(response.data)
+      if (response.status === 200) navigate('/book')
+    } catch (error) {
+      console.log(error);
+      toast.error("An error occured!", {
+        position: "top-right",
+      });
+    }
+  };
   return (
     <SignInContainer>
       <SignInWrapper>
@@ -23,17 +56,17 @@ export const SignIn = () => {
         <SignInForm>
           <SignInFormInput>
             <MdOutlineAlternateEmail />
-            <input type="text" placeholder="Email" />
+            <input type="text" placeholder="Email" name="email" onChange={handleChange} />
           </SignInFormInput>
           <SignInFormInput>
             <MdOutlineLock />
-            <input type="password" placeholder="Password" />
+            <input type="password" placeholder="Password" name="password" onChange={handleChange} />
           </SignInFormInput>
           <Link to="/forgot-password" className="forgot-password">
             forgot password?
           </Link>
           <SignInFormButton>
-            <button type="submit">login</button>
+            <button type="submit" onClick={handleSubmit}>login</button>
           </SignInFormButton>
         </SignInForm>
       </SignInWrapper>
@@ -49,6 +82,7 @@ export const SignIn = () => {
           </Link>
         </SignInAltText>
       </SignInAlt>
+      <ToastContainer />
     </SignInContainer>
   );
 };
