@@ -23,3 +23,7 @@ export type UserData = {
   user: User;
   tokens: Tokens;
 } | null;
+
+export type UserContextProps = {
+  children: React.ReactNode;
+};

@@ -17,7 +17,6 @@ import Miles from "../../assets/game-icons_path-distance.png";
 import Duration from "../../assets/game-icons_duration.png";
 import RockingChair from "../../assets/game-icons_rocking-chair.png";
 import { useUserContext } from "../../context/userContext";
-import { Navigate } from "react-router-dom";
 import axios from "axios";
 import React from "react";
 import { User } from "../../context/context-types";
@@ -25,24 +24,47 @@ import { User } from "../../context/context-types";
 export const Dashboard = () => {
   const { currentUser } = useUserContext();
   const [profile, setProfile] = React.useState<User>();
+  const [orders, setOrders] = React.useState<any>([]);
 
   const getUserProfile = async () => {
-    const response = await axios.get(
-      `https://kazeem-air-service-production.up.railway.app/api/v1/users/${currentUser?.user.id}`,
-      {
-        headers: {
-          Authorization: `Bearer ${currentUser?.tokens.access.token}`,
-        },
-      }
-    );
-    setProfile(response.data);
+    try {
+      const response = await axios.get(
+        `https://kazeem-air-service-production.up.railway.app/api/v1/users/${currentUser?.user.id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${currentUser?.tokens.access.token}`,
+          },
+        }
+      );
+      setProfile(response.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getUserOrders = async () => {
+    try {
+      const response = await axios.get(
+        `https://kazeem-air-service-production.up.railway.app/api/v1/flight/orders`,
+        {
+          headers: {
+            Authorization: `Bearer ${currentUser?.tokens.access.token}`,
+          },
+        }
+      );
+      console.log(response.data);
+      setOrders(response.data);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   React.useEffect(() => {
     getUserProfile();
-  }, []);
+    getUserOrders();
+  }, [currentUser]);
 
-  return currentUser ? (
+  return (
     <DashboardContainer>
       <DashboardHero>
         <DashboardWelcomeText>
@@ -114,7 +136,5 @@ export const Dashboard = () => {
         </DashboardContentBtnOutline>
       </DashboardContent>
     </DashboardContainer>
-  ) : (
-    <Navigate to="/signin" />
   );
 };

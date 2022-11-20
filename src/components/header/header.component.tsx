@@ -20,7 +20,13 @@ export const Header = ({ currentUser }: any) => {
           <FiSearch />
         </HeaderItem>
         <HeaderItem>
-          {currentUser ? <CgProfile /> : <a href="/signin">Login</a>}
+          {currentUser ? (
+            <a href="/dashboard">
+              <CgProfile />
+            </a>
+          ) : (
+            <a href="/signin">Login</a>
+          )}
         </HeaderItem>
       </HeaderItemList>
     </HeaderContainer>

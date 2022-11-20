@@ -23,8 +23,6 @@ export const SignIn = () => {
     password: "",
   });
 
-  const { setCurrentUser } = useUserContext();
-
   const navigate = useNavigate();
 
   const handleChange: ChangeEventHandler = (
@@ -40,8 +38,7 @@ export const SignIn = () => {
       console.log(formValues);
       const url = `${BASE_URL}/auth/login`;
       const response = await axios.post(url, formValues);
-      console.log(response.data);
-      setCurrentUser(response.data);
+      localStorage.setItem("user", JSON.stringify(response.data));
       if (response.status === 200) navigate("/dashboard");
     } catch (error) {
       console.log(error);
