@@ -38,7 +38,7 @@ export const FormTitle = styled.h1`
   color: #555;
 `;
 
-export const FormContainer = styled.h1`
+export const FormContainer = styled.div`
   /* position: relative; */
   width: 50%;
   height: 100%;

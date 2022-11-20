@@ -66,35 +66,29 @@ export const Book = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    
+
     let response;
     try {
       if (tripType === Trip_Type.Round_trip) {
-        response = await axios.post(
-          `${BASE_URL}/flight/two_way_offer`,
-          {
-            cabin_class,
-            origin,
-            destination,
-            departure_date,
-            return_origin: origin,
-            return_destination: destination,
-            return_departure_date,
-          }
-        );
+        response = await axios.post(`${BASE_URL}/flight/two_way_offer`, {
+          cabin_class,
+          origin,
+          destination,
+          departure_date,
+          return_origin: origin,
+          return_destination: destination,
+          return_departure_date,
+        });
       } else {
-        response = await axios.post(
-          `${BASE_URL}/flight/offer`,
-          {
-            cabin_class,
-            origin,
-            destination,
-            departure_date,
-          }
-        );
+        response = await axios.post(`${BASE_URL}/flight/offer`, {
+          cabin_class,
+          origin,
+          destination,
+          departure_date,
+        });
       }
       setAllFlights(response.data.flight);
-      console.log(response.data)
+      console.log(response.data);
     } catch (error) {
       console.log(error);
     }
@@ -103,100 +97,105 @@ export const Book = () => {
   return (
     <BookContainer>
       <BookHero>
-        {/* <h2>book</h2>
-        <p>
-          Plan your next shopping and Experience the marketplaces of the world
-          by booking your exceptional journey with the World's Best Airline.{" "}
-        </p> */}
-      <HeroContent>
-        <BookBox>
-          <form onSubmit={handleSubmit}>
-            <ul>
-              <li>
-                <img src={Plane} alt="plane" />
-                <select
-                  name="trip_type"
-                  onChange={(e) => {
-                    setTripType(e.target.value as Trip_Type);
-                  }}
-                >
-                  {(Object.keys(Trip_Type) as (keyof typeof Trip_Type)[]).map(
-                    (key) => (
+        <HeroContent>
+          <BookBox>
+            <form onSubmit={handleSubmit}>
+              <ul>
+                <li>
+                  <img src={Plane} alt="plane" />
+                  <select
+                    name="trip_type"
+                    onChange={(e) => {
+                      setTripType(e.target.value as Trip_Type);
+                    }}
+                  >
+                    <option disabled selected>
+                      Select Journey Type:
+                    </option>
+                    {(Object.keys(Trip_Type) as (keyof typeof Trip_Type)[]).map(
+                      (key) => (
+                        <option key={key}>{key}</option>
+                      )
+                    )}
+                  </select>
+                </li>
+                <li>
+                  <img src={User} alt="user" />
+                  <span>1 adult</span>
+                  <img src={DownArrow} alt="down arrow" />
+                </li>
+                <li>
+                  <img src={Economy} alt="economy" />
+                  <select name="cabin_class" id="" onChange={handleChange}>
+                    <option disabled selected>
+                      Cabin Class
+                    </option>
+                    {(
+                      Object.keys(Cabin_Class) as (keyof typeof Cabin_Class)[]
+                    ).map((key) => (
                       <option key={key}>{key}</option>
-                    )
-                  )}
-                </select>
-              </li>
-              <li>
-                <img src={User} alt="user" />
-                <span>1 adult</span>
-                <img src={DownArrow} alt="down arrow" />
-              </li>
-              <li>
-                <img src={Economy} alt="economy" />
-                <select name="cabin_class" id="" onChange={handleChange}>
-                  {(
-                    Object.keys(Cabin_Class) as (keyof typeof Cabin_Class)[]
-                  ).map((key) => (
-                    <option key={key}>{key}</option>
-                  ))}
-                </select>
-              </li>
-            </ul>
-            <div className="form">
-              <div className="airline">
-                <label>From:</label>
-                <select name="origin" onChange={handleChange}>
-                  {airlines &&
-                    airlines.map((airline) => (
-                      <option key={airline.id}>{airline.iata_code}</option>
                     ))}
-                </select>
+                  </select>
+                </li>
+              </ul>
+              <div className="form">
+                <div className="airline">
+                  <label>From:</label>
+                  <select name="origin" onChange={handleChange}>
+                    {airlines &&
+                      airlines.map((airline) => (
+                        <option key={airline.id} value={airline.iata_code}>
+                          {airline.name}
+                        </option>
+                      ))}
+                  </select>
+                </div>
+                <div className="airline">
+                  <label>To:</label>
+                  <select name="destination" onChange={handleChange}>
+                    {airlines &&
+                      airlines.map((airline) => (
+                        <option key={airline.id} value={airline.iata_code}>
+                          {airline.name}
+                        </option>
+                      ))}
+                  </select>
+                </div>
+                <input
+                  type="date"
+                  name="departure_date"
+                  value={formValues.departure_date}
+                  onChange={handleChange}
+                />
+                <input
+                  type="date"
+                  name="return_departure_date"
+                  value={formValues.return_departure_date}
+                  onChange={handleChange}
+                />
+                <ButtonBox>
+                  <button>
+                    <FiSearch />
+                  </button>
+                </ButtonBox>
               </div>
-              <div className="airline">
-                <label>To:</label>
-                <select name="destination" onChange={handleChange}>
-                  {airlines &&
-                    airlines.map((airline) => (
-                      <option key={airline.id}>{airline.iata_code}</option>
-                    ))}
-                </select>
-              </div>
-              <input
-                type="date"
-                name="departure_date"
-                value={formValues.departure_date}
-                onChange={handleChange}
-              />
-              <input
-                type="date"
-                name="return_departure_date"
-                value={formValues.return_departure_date}
-                onChange={handleChange}
-              />
-              <ButtonBox>
-                <button>
-                  <FiSearch />
-                </button>
-              </ButtonBox>
-            </div>
-            <ul>
-              <li>
-                <img src={Booking} alt="Booking" />
-                <span>my booking</span>
-              </li>
-              <li>
-                <img src={AlarmAdd} alt="Alarm-add" />
-                <span>Cabin status</span>
-              </li>
-              <li>
-                <img src={Plane} alt="Plane" />
-                <span>charter Cabin</span>
-              </li>
-            </ul>
-          </form>
-        </BookBox>
-      </HeroContent>
+              <ul>
+                <li>
+                  <img src={Booking} alt="Booking" />
+                  <span>my booking</span>
+                </li>
+                <li>
+                  <img src={AlarmAdd} alt="Alarm-add" />
+                  <span>Cabin status</span>
+                </li>
+                <li>
+                  <img src={Plane} alt="Plane" />
+                  <span>charter Cabin</span>
+                </li>
+              </ul>
+            </form>
+          </BookBox>
+        </HeroContent>
       </BookHero>
       {allFlights.length > 0 && <FlightList flights={allFlights} />}
     </BookContainer>
