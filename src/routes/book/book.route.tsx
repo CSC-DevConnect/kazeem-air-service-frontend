@@ -60,6 +60,11 @@ export const Book = () => {
     }
   };
 
+  React.useEffect(() => {
+    localStorage.setItem("countAdult", String(countAdult));
+    localStorage.setItem("countChild", String(countChild));
+  }, [countAdult, countChild]);
+
   const getAirlines = async () => {
     const response = await axios.get(
       `${BASE_URL}/flight/airports?countryCode=NG`

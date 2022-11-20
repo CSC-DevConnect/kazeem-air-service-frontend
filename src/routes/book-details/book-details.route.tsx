@@ -9,7 +9,7 @@ import {
   CheckoutBtn,
 } from "./book-details.styles";
 import plane from "../../assets/Vector.png";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../../constant";
 import axios from "axios";
 import { useUserContext } from "../../context/userContext";
@@ -17,10 +17,13 @@ import moment from "moment";
 
 export const BookDetails = () => {
   const { currentUser } = useUserContext();
+  console.log(currentUser);
   const flight = JSON.parse(localStorage.getItem("selectedFlight")!);
+  const countAdult = JSON.parse(localStorage.getItem("countAdult")!);
+  const countChild = JSON.parse(localStorage.getItem("countChild")!);
 
   const [formValues, setFormValues] = React.useState({
-    fullName: currentUser?.user?.fullName,
+    fullName: currentUser?.user.fullName,
     email: currentUser?.user?.email,
     country: "",
     phoneNumber: currentUser?.user?.phoneNumber,
@@ -30,7 +33,8 @@ export const BookDetails = () => {
   });
 
   console.log("FORM VALUES", formValues);
-  let { offerId, passengerId } = useParams();
+  const passengerId = flight.passengers[0].id;
+  const offerId = flight.id;
 
   const navigate = useNavigate();
 
@@ -47,17 +51,18 @@ export const BookDetails = () => {
       console.log(formValues);
       const payload = {
         type: "instant",
-        phone_number: formValues.phoneNumber,
-        email: formValues.email,
+        phone_number: currentUser?.user?.phoneNumber,
+        fullName: currentUser?.user.fullName,
+        email: currentUser?.user?.email,
         born_on: formValues.dateOfBirth,
         title: formValues.title,
-        gender: formValues.gender,
-        family_name: formValues.fullName?.substring(
+        gender: currentUser?.user.gender,
+        family_name: currentUser?.user.fullName?.substring(
           0,
-          formValues.fullName?.indexOf(" ")
+          currentUser?.user.fullName?.indexOf(" ")
         ),
-        given_name: formValues.fullName?.substring(
-          formValues.fullName?.indexOf(" ") + 1
+        given_name: currentUser?.user.fullName?.substring(
+          currentUser?.user.fullName?.indexOf(" ") + 1
         ),
       };
 
@@ -73,16 +78,18 @@ export const BookDetails = () => {
     <BookDetailsContainer>
       <BookDetailsContent>
         <TripDetails>
-          <p>Trip Details</p>
+          <h2>Trip Details</h2>
           <div>
             <div className="trip-meta-data">
               <div className="airport-name">
-                <h3>{flight.slices[0].origin.name}</h3>
+                <h3>{flight.slices[0].origin.city_name}</h3>
                 <h3>&rarr;</h3>
-                <h3>{flight.slices[0].destination.name}</h3>
+                <h3>{flight.slices[0].destination.city_name}</h3>
               </div>
               <div>
-                <p>3 Adults 3 Children 2 Infants</p>
+                <p>
+                  {countAdult} Adults {countChild} Children
+                </p>
               </div>
             </div>
             <div className="journey">
@@ -115,7 +122,7 @@ export const BookDetails = () => {
                     <img src={plane} alt="plane" />
                   </div>
                 </div>
-                <div className="return-airline">
+                <div className="departure-airline">
                   <span>
                     {moment(flight.slices[0].segments[0].arriving_at).format(
                       "YY MMM Do"

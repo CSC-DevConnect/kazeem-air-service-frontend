@@ -23,6 +23,7 @@ export const TripDetails = styled.div`
   width: 100%;
   background: #e8edef;
   border-radius: 5px;
+  padding: 10px;
 
   .trip-meta-data {
     display: flex;
@@ -156,4 +157,5 @@ export const CheckoutBtn = styled.button`
   border: none;
   outline: none;
   color: #fff;
+  cursor: pointer;
 `;
