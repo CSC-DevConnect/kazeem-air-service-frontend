@@ -135,4 +135,16 @@ export const PriceDetailsContent = styled.div`
   border-radius: 10px;
 `;
 
+export const CheckoutBtn = styled.button`
+  background: #480fe7;
+  padding: 10px;
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  outline: none;
+  color: #fff;
+`;
+
 

@@ -4,8 +4,8 @@ import {
   BookDetailsContent,
   ContactDetails,
   FormContainer,
-  PriceDetailsContent,
   TripDetails,
+  CheckoutBtn
 } from "./book-details.styles";
 import plane from "../../assets/Vector.png";
 
@@ -63,17 +63,18 @@ export const BookDetails = () => {
           </div>
           <FormContainer>
             <form>
-              <input type="text" name="fullName" placeholder="Username" />
+              <input type="email" name="fullName" placeholder="Email" />
               <input
-                type="text"
+                type="number"
                 name="phoneNumber"
                 placeholder="Phone Number"
               />
             </form>
           </FormContainer>
+
+          <CheckoutBtn>Book Now</CheckoutBtn>
         </ContactDetails>
       </BookDetailsContent>
-      <PriceDetailsContent></PriceDetailsContent>
     </BookDetailsContainer>
   );
 };
