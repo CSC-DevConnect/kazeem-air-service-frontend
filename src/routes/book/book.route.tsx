@@ -37,6 +37,28 @@ export const Book = () => {
     Trip_Type.Round_trip
   );
   const [allFlights, setAllFlights] = React.useState<any[]>([]);
+  const [countAdult, setCountAdult] = React.useState(1);
+  const [countChild, setCountChild] = React.useState(0);
+
+  const incrementAdult = () => {
+    setCountAdult(countAdult + 1);
+  };
+
+  const decrementAdult = () => {
+    if (countAdult > 1) {
+      setCountAdult(countAdult - 1);
+    }
+  };
+
+  const incrementChild = () => {
+    setCountChild(countChild + 1);
+  };
+
+  const decrementChild = () => {
+    if (countChild > 0) {
+      setCountChild(countChild - 1);
+    }
+  };
 
   const getAirlines = async () => {
     const response = await axios.get(
@@ -119,10 +141,45 @@ export const Book = () => {
                     )}
                   </select>
                 </li>
-                <li>
+                <li id="passenger">
                   <img src={User} alt="user" />
-                  <span>1 adult</span>
-                  <img src={DownArrow} alt="down arrow" />
+                  <div className="passenger">
+                    <p>Passenger</p>
+                    <div className="passenger-inner">
+                      <div className="passenger-type">
+                        <p>Adult</p>
+                        <table>
+                          <tr>
+                            <td onClick={decrementAdult}>
+                              <span>-</span>
+                            </td>
+                            <td>
+                              <span className="count">{countAdult}</span>
+                            </td>
+                            <td onClick={incrementAdult}>
+                              <span>+</span>
+                            </td>
+                          </tr>
+                        </table>
+                      </div>
+                      <div className="passenger-type">
+                        <p>Children</p>
+                        <table>
+                          <tr>
+                            <td onClick={decrementChild}>
+                              <span>-</span>
+                            </td>
+                            <td>
+                              <span className="count">{countChild}</span>
+                            </td>
+                            <td onClick={incrementChild}>
+                              <span>+</span>
+                            </td>
+                          </tr>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
                 </li>
                 <li>
                   <img src={Economy} alt="economy" />

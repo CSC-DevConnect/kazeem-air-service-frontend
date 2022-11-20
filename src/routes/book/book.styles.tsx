@@ -42,7 +42,7 @@ export const BookBox = styled.div`
 
   ul {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     margin: 10px;
 
     li {
@@ -71,6 +71,63 @@ export const BookBox = styled.div`
         }
       }
     }
+
+    p {
+      color: #000;
+      font-size: 16px;
+      line-height: 20px;
+    }
+
+    .passenger {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    #passenger {
+      align-items: flex-start;
+      margin: 10px 0;
+
+      > img {
+        margin-right: 10px;
+      }
+    }
+
+    .passenger-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .passenger-type {
+      margin-right: 10px;
+
+      > p {
+        color: #a7c5ff;
+        font-weight: 600;
+      }
+    }
+
+    table {
+      border-radius: 5px;
+      width: 100px;
+      margin-top: 10px;
+
+      td {
+        cursor: pointer;
+        border: 2px solid gray;
+
+        > span {
+          color: #a7c5ff;
+          font-weight: bold;
+        }
+
+        .count {
+          color: #000;
+        }
+      }
+    }
   }
 
   .form {
@@ -78,6 +135,7 @@ export const BookBox = styled.div`
     align-items: center;
     background: #a7c5ff;
     height: 80px;
+    margin: 30px 0;
 
     .airline {
       display: flex;
@@ -137,6 +195,8 @@ export const BookBox = styled.div`
   }
 
   option {
-    background: gray;
+    background: #bbd2ff;
+    border: 1px solid #f9fbff;
+    color: #848587;
   }
 `;
