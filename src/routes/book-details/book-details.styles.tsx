@@ -80,6 +80,7 @@ export const ContactDetails = styled.div`
 
 export const FormContainer = styled.div`
   display: flex;
+  margin-top: 20px;
   justify-content: flex-start;
   align-items: flex-start;
   transition: 0.5s;
@@ -110,7 +111,7 @@ export const FormContainer = styled.div`
     }
   }
 
-  form input {
+  form .input {
     position: relative;
     width: 80%;
     height: 50px;

@@ -17,7 +17,7 @@ export const FlightList = ({ flights }: any) => {
     <FlightListContainer>
       <FlightListWrapper>
         {flights.map((flight: any) => (
-          <FlightCard key={flight.id} to={`/${flight.id}`}>
+          <FlightCard key={flight.id} to={`/offer/${flight.id}`}>
             <FlightCardHeader>
               <h3>Departure Journey</h3>
               <p>{moment(flight.departure_date).format("MMM Do YYYY")}</p>
