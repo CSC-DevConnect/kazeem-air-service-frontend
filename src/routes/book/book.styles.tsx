@@ -76,32 +76,57 @@ export const BookBox = styled.div`
   .form {
     display: flex;
     align-items: center;
-    margin: 15px 18px 0;
     background: #a7c5ff;
-    margin: 10px;
+    height: 80px;
 
     .airline {
       display: flex;
       align-items: center;
-      margin: 0 10px;
+      justify-content: center;
       border-right: 2px solid #ecebeb;
       width: 100%;
+      height: 100%;
+      padding: 10px;
+    }
+
+    .form-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      padding: 10px;
+    }
+
+    .form-input {
+      background: #bbd2ff;
+      border: 1px solid #f9fbff;
+      padding: 5px;
+      color: #848587;
+      text-align: left;
+    }
+
+    .input {
+      margin: 0 5px;
     }
   }
 
   input,
   select {
+    outline: none;
+    background: transparent;
+    color: #848587;
+    width: 100%;
     border: none;
     outline: none;
-    border-right: 2px solid #ecebeb;
-    background: transparent;
-    padding: 10px;
-    color: #000;
-    width: 100%;
 
     ::placeholder {
       color: #fff;
     }
+  }
+
+  label {
+    font-size: 14px;
   }
 
   select {
@@ -113,9 +138,5 @@ export const BookBox = styled.div`
 
   option {
     background: gray;
-  }
-
-  label {
-    font-size: 1rem;
   }
 `;

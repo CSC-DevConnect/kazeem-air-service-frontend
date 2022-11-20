@@ -140,43 +140,56 @@ export const Book = () => {
               </ul>
               <div className="form">
                 <div className="airline">
-                  <select name="origin" onChange={handleChange}>
-                    <option disabled selected>
-                      Select Origin:
-                    </option>
-                    {airlines &&
-                      airlines.map((airline) => (
-                        <option key={airline.id} value={airline.iata_code}>
-                          {airline.name}
-                        </option>
-                      ))}
-                  </select>
+                  <div className="form-input">
+                    <select name="origin" onChange={handleChange}>
+                      <option disabled selected>
+                        Select Origin:
+                      </option>
+                      {airlines &&
+                        airlines.map((airline) => (
+                          <option key={airline.id} value={airline.iata_code}>
+                            {airline.name}
+                          </option>
+                        ))}
+                    </select>
+                  </div>
                 </div>
                 <div className="airline">
-                  <select name="destination" onChange={handleChange}>
-                    <option disabled selected>
-                      Select Destination:
-                    </option>
-                    {airlines &&
-                      airlines.map((airline) => (
-                        <option key={airline.id} value={airline.iata_code}>
-                          {airline.name}
-                        </option>
-                      ))}
-                  </select>
+                  <div className="form-input">
+                    <select name="destination" onChange={handleChange}>
+                      <option disabled selected>
+                        Select Destination:
+                      </option>
+                      {airlines &&
+                        airlines.map((airline) => (
+                          <option key={airline.id} value={airline.iata_code}>
+                            {airline.name}
+                          </option>
+                        ))}
+                    </select>
+                  </div>
                 </div>
-                <input
-                  type="date"
-                  name="departure_date"
-                  value={formValues.departure_date}
-                  onChange={handleChange}
-                />
-                <input
-                  type="date"
-                  name="return_departure_date"
-                  value={formValues.return_departure_date}
-                  onChange={handleChange}
-                />
+                <div className="form-inner">
+                  <div className="form-input input">
+                    <label htmlFor="">Depart</label>
+                    <input
+                      type="date"
+                      name="departure_date"
+                      value={formValues.departure_date}
+                      onChange={handleChange}
+                    />
+                  </div>
+                  <div className="form-input input">
+                    <label htmlFor="">Return</label>
+                    <input
+                      type="date"
+                      name="return_departure_date"
+                      value={formValues.return_departure_date}
+                      onChange={handleChange}
+                    />
+                  </div>
+                </div>
+
                 <ButtonBox>
                   <button>
                     <FiSearch />
