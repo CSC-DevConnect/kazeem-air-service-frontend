@@ -38,8 +38,8 @@ export const BookBox = styled.div`
   background: #eff4ff;
   box-shadow: 2px 2px 3px -3px #430b06;
   padding: 24px;
-  border-radius: 25px;
-  width: 800px;
+  border-radius: 0px;
+  width: 100%;
 
   ul {
     display: flex;

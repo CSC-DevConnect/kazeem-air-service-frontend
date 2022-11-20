@@ -38,7 +38,7 @@ export const SignIn = () => {
       const url = `${BASE_URL}/auth/login`;
       const response = await axios.post(url, formValues);
       console.log(response.data)
-      if (response.status === 200) navigate('/book')
+      if (response.status === 200) navigate('/dashboard')
     } catch (error) {
       console.log(error);
       toast.error("An error occured!", {
