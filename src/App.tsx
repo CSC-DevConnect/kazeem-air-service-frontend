@@ -9,7 +9,6 @@ import {
   SignIn,
   SignUp,
 } from "./routes";
-import BookFlight from "./routes/book-flight/book-flight.route";
 
 function App() {
   return (
@@ -19,7 +18,6 @@ function App() {
           <Route index element={<Home />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/book" element={<Book />} />
-          <Route path="/flight" element={<BookFlight />} />
           <Route path="/detail" element={<BookDetails />} />
         </Route>
         <Route path="/signin" element={<SignIn />} />
