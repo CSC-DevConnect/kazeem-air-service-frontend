@@ -52,8 +52,10 @@ export const Dashboard = () => {
           },
         }
       );
-      console.log(response.data);
-      setOrders(response.data);
+      const filteredOrders = response.data.flight.data.filter(
+        (order: any) => order?.metadata?.userId === currentUser?.user.id
+      );
+      setOrders(filteredOrders);
     } catch (error) {
       console.log(error);
     }
@@ -90,7 +92,21 @@ export const Dashboard = () => {
           <img src={Vector} alt="vector" />
           <p>Your recent activities</p>
           <hr />
-          <p>You don’t have any activity at the moment.</p>
+          {orders ? (
+            orders?.map((order: any) => (
+              <div key={order.id}>
+                <p className="message">
+                  You booked flight from
+                  <span> {order?.slices[0]?.origin.city_name} </span> to
+                  <span> {order?.slices[0]?.destination.city_name} </span>
+                  at
+                  <span> ${order?.total_amount}</span>
+                </p>
+              </div>
+            ))
+          ) : (
+            <p>You don’t have any activity at the moment.</p>
+          )}
           <div>
             <DashboardContentBtnOutline>
               See your summary

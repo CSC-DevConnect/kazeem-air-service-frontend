@@ -50,13 +50,13 @@ export const BookDetails = () => {
     try {
       console.log(formValues);
       const payload = {
-        type: "instant",
-        phone_number: currentUser?.user?.phoneNumber,
+        type: "hold",
+        phone_number: "+442080160509",
         fullName: currentUser?.user.fullName,
         email: currentUser?.user?.email,
-        born_on: formValues.dateOfBirth,
-        title: formValues.title,
-        gender: currentUser?.user.gender,
+        born_on: "1987-07-24",
+        title: "mr",
+        gender: currentUser?.user.gender.slice(0, 1),
         family_name: currentUser?.user.fullName?.substring(
           0,
           currentUser?.user.fullName?.indexOf(" ")
@@ -68,12 +68,25 @@ export const BookDetails = () => {
 
       console.log("PAYLOAD", payload);
       const url = `${BASE_URL}/flight/orders?selected_offers=${offerId}&passenger_id=${passengerId}`;
-      const response = await axios.post(url, payload);
+      // const response = await axios.post(url, payload,
+      //   headers: {
+      //     Authorization: `Bearer ${currentUser?.tokens.access.token}`,
+      //   },
+      // );
+      const response = await axios({
+        method: "POST",
+        url,
+        data: { ...payload },
+        headers: {
+          Authorization: `Bearer ${currentUser?.tokens.access.token}`,
+        },
+      });
       if (response.status === 201) navigate("/dashboard");
     } catch (error) {
       console.log(error);
     }
   };
+
   return (
     <BookDetailsContainer>
       <BookDetailsContent>
@@ -191,11 +204,29 @@ export const BookDetails = () => {
               <div>
                 <strong>Title:</strong>
                 <label htmlFor="mr">Mr</label>
-                <input name="gender" id="mr" type="radio" value="mr" />
+                <input
+                  name="title"
+                  id="mr"
+                  type="radio"
+                  value={formValues.title}
+                  onChange={handleChange}
+                />
                 <label htmlFor="mrs">Mrs</label>
-                <input name="gender" id="mrs" type="radio" value="mrs" />
+                <input
+                  name="title"
+                  id="mrs"
+                  type="radio"
+                  value={formValues.title}
+                  onChange={handleChange}
+                />
                 <label htmlFor="ms">Ms</label>
-                <input name="gender" id="ms" type="radio" value="ms" />
+                <input
+                  name="title"
+                  id="ms"
+                  type="radio"
+                  value={formValues.title}
+                  onChange={handleChange}
+                />
               </div>
             </form>
           </FormContainer>

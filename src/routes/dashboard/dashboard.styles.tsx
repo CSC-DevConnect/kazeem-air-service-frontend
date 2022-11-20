@@ -90,6 +90,14 @@ export const DashboardActivities = styled.div`
   h4 {
     color: #474545;
   }
+
+  .message {
+    font-size: 18px;
+
+    > span {
+      font-weight: bold;
+    }
+  }
 `;
 
 export const DashboardTravels = styled.div`

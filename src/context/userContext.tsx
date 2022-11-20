@@ -8,14 +8,12 @@ export const UserContext = createContext({
 export const UserProvider = ({ children }: ChildrenContextProps) => {
   const [currentUser, setCurrentUser] = useState<UserData | null>(null);
 
-  let user;
-
   useEffect(() => {
-    user = localStorage.getItem("user");
+    const user = localStorage.getItem("user");
     if (user) {
       setCurrentUser(JSON.parse(user));
     }
-  }, [user]);
+  }, []);
 
   const value = {
     currentUser,

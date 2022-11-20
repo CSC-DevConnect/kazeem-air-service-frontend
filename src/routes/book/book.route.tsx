@@ -67,7 +67,7 @@ export const Book = () => {
 
   const getAirlines = async () => {
     const response = await axios.get(
-      `${BASE_URL}/flight/airports?countryCode=NG`
+      `${BASE_URL}/flight/airports?countryCode=US`
     );
     setAirlines(response.data.data);
   };

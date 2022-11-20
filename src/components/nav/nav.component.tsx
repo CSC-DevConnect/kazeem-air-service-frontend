@@ -1,7 +1,14 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { NavContainer, NavItem, NavItemLink, NavItemList } from "./nav.styles";
 
 export const NavBar = ({ currentUser }: any) => {
+  const navigate = useNavigate();
+  const logout = () => {
+    localStorage.clear();
+    navigate("/");
+  };
+  
   return (
     <NavContainer>
       <NavItemList>
@@ -21,7 +28,9 @@ export const NavBar = ({ currentUser }: any) => {
           <NavItemLink to="/#help">help</NavItemLink>
         </NavItem>
         {currentUser ? (
-          ""
+          <NavItem onClick={logout}>
+            <NavItemLink to="#logout">log out</NavItemLink>
+          </NavItem>
         ) : (
           <NavItem>
             <NavItemLink to="/signup">sign up</NavItemLink>

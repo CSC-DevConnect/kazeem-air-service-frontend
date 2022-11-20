@@ -32,7 +32,9 @@ export const TripDetails = styled.div`
 
     .airport-name {
       display: flex;
-      h3, p {
+
+      h3,
+      p {
         margin-right: 10px;
       }
     }
@@ -58,6 +60,10 @@ export const TripDetails = styled.div`
       align-items: flex-start;
       justify-content: space-around;
 
+      > div {
+        width: 100%;
+      }
+
       #plane {
         display: flex;
         justify-content: center;
@@ -80,6 +86,7 @@ export const TripDetails = styled.div`
     }
   }
 `;
+
 export const ContactDetails = styled.div`
   background: #e8edef;
   padding: 15px;
