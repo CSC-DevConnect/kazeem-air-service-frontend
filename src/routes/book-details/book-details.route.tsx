@@ -4,8 +4,8 @@ import {
   BookDetailsContent,
   ContactDetails,
   FormContainer,
-  PriceDetailsContent,
   TripDetails,
+  CheckoutBtn,
 } from "./book-details.styles";
 import plane from "../../assets/Vector.png";
 
@@ -63,17 +63,56 @@ export const BookDetails = () => {
           </div>
           <FormContainer>
             <form>
-              <input type="text" name="fullName" placeholder="Username" />
+              <label htmlFor="email">Email:</label>
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                className="input"
+              />
+              <label htmlFor="email">Full Name:</label>
               <input
                 type="text"
+                name="name"
+                placeholder="Surname First"
+                className="input"
+              />
+              <label htmlFor="phoneNumber">Contact Number:</label>
+              <input
+                type="number"
                 name="phoneNumber"
                 placeholder="Phone Number"
+                className="input"
               />
+              <label htmlFor="date">Date of Birth:</label>
+              <input
+                type="date"
+                name="date"
+                placeholder="Phone Number"
+                className="input"
+              />
+              <div>
+                <strong>Gender:</strong>
+                <label htmlFor="male">Male</label>
+                <input name="gender" id="male" type="radio" value="male" />
+
+                <label htmlFor="female">Female</label>
+                <input name="gender" id="female" type="radio" value="female" />
+              </div>
+              <div>
+                <strong>Title:</strong>
+                <label htmlFor="mr">Mr</label>
+                <input name="gender" id="mr" type="radio" value="mr" />
+                <label htmlFor="mrs">Mrs</label>
+                <input name="gender" id="mrs" type="radio" value="mrs" />
+                <label htmlFor="ms">Ms</label>
+                <input name="gender" id="ms" type="radio" value="ms" />
+              </div>
             </form>
           </FormContainer>
+          <CheckoutBtn>Book Now</CheckoutBtn>
         </ContactDetails>
       </BookDetailsContent>
-      <PriceDetailsContent></PriceDetailsContent>
     </BookDetailsContainer>
   );
 };

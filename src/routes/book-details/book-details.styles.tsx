@@ -80,6 +80,7 @@ export const ContactDetails = styled.div`
 
 export const FormContainer = styled.div`
   display: flex;
+  margin-top: 20px;
   justify-content: flex-start;
   align-items: flex-start;
   transition: 0.5s;
@@ -110,7 +111,7 @@ export const FormContainer = styled.div`
     }
   }
 
-  form input {
+  form .input {
     position: relative;
     width: 80%;
     height: 50px;
@@ -133,6 +134,18 @@ export const PriceDetailsContent = styled.div`
   width: 20%;
   height: 300px;
   border-radius: 10px;
+`;
+
+export const CheckoutBtn = styled.button`
+  background: #480fe7;
+  padding: 10px;
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  outline: none;
+  color: #fff;
 `;
 
 
