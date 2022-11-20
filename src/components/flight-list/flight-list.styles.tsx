@@ -14,7 +14,7 @@ export const FlightListWrapper = styled.div`
   padding: 20px;
 `;
 
-export const FlightCard = styled(Link)`
+export const FlightCard = styled.div`
   background: linear-gradient(
     128.35deg,
     #3177ff -37.96%,
@@ -25,6 +25,7 @@ export const FlightCard = styled(Link)`
   padding: 20px;
   border-radius: 10px;
   color: #000;
+  cursor: pointer;
 `;
 
 export const FlightCardHeader = styled.div`

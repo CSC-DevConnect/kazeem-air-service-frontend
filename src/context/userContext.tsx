@@ -1,11 +1,11 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { UserContextProps, UserData } from "./context-types";
+import { ChildrenContextProps, UserData } from "./context-types";
 
 export const UserContext = createContext({
   currentUser: {} as UserData | null,
 });
 
-export const UserProvider = ({ children }: UserContextProps) => {
+export const UserProvider = ({ children }: ChildrenContextProps) => {
   const [currentUser, setCurrentUser] = useState<UserData | null>(null);
 
   let user;

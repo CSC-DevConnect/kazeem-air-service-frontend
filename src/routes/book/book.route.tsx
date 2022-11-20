@@ -109,6 +109,7 @@ export const Book = () => {
           departure_date,
         });
       }
+      localStorage.setItem("flights", JSON.stringify(response.data.flight));
       setAllFlights(response.data.flight);
       console.log(response.data);
     } catch (error) {
@@ -149,33 +150,37 @@ export const Book = () => {
                       <div className="passenger-type">
                         <p>Adult</p>
                         <table>
-                          <tr>
-                            <td onClick={decrementAdult}>
-                              <span>-</span>
-                            </td>
-                            <td>
-                              <span className="count">{countAdult}</span>
-                            </td>
-                            <td onClick={incrementAdult}>
-                              <span>+</span>
-                            </td>
-                          </tr>
+                          <tbody>
+                            <tr>
+                              <td onClick={decrementAdult}>
+                                <span>-</span>
+                              </td>
+                              <td>
+                                <span className="count">{countAdult}</span>
+                              </td>
+                              <td onClick={incrementAdult}>
+                                <span>+</span>
+                              </td>
+                            </tr>
+                          </tbody>
                         </table>
                       </div>
                       <div className="passenger-type">
                         <p>Children</p>
                         <table>
-                          <tr>
-                            <td onClick={decrementChild}>
-                              <span>-</span>
-                            </td>
-                            <td>
-                              <span className="count">{countChild}</span>
-                            </td>
-                            <td onClick={incrementChild}>
-                              <span>+</span>
-                            </td>
-                          </tr>
+                          <tbody>
+                            <tr>
+                              <td onClick={decrementChild}>
+                                <span>-</span>
+                              </td>
+                              <td>
+                                <span className="count">{countChild}</span>
+                              </td>
+                              <td onClick={incrementChild}>
+                                <span>+</span>
+                              </td>
+                            </tr>
+                          </tbody>
                         </table>
                       </div>
                     </div>

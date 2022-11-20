@@ -13,9 +13,11 @@ import { useNavigate, useParams } from "react-router-dom";
 import { BASE_URL } from "../../constant";
 import axios from "axios";
 import { useUserContext } from "../../context/userContext";
+import moment from "moment";
 
 export const BookDetails = () => {
   const { currentUser } = useUserContext();
+  const flight = JSON.parse(localStorage.getItem("selectedFlight")!);
 
   const [formValues, setFormValues] = React.useState({
     fullName: currentUser?.user?.fullName,
@@ -50,11 +52,16 @@ export const BookDetails = () => {
         born_on: formValues.dateOfBirth,
         title: formValues.title,
         gender: formValues.gender,
-        family_name: formValues.fullName?.substring(0, formValues.fullName?.indexOf(' ')),
-        given_name: formValues.fullName?.substring(formValues.fullName?.indexOf(' ') + 1),
+        family_name: formValues.fullName?.substring(
+          0,
+          formValues.fullName?.indexOf(" ")
+        ),
+        given_name: formValues.fullName?.substring(
+          formValues.fullName?.indexOf(" ") + 1
+        ),
       };
 
-      console.log("PAYLOAD", payload)
+      console.log("PAYLOAD", payload);
       const url = `${BASE_URL}/flight/orders?selected_offers=${offerId}&passenger_id=${passengerId}`;
       const response = await axios.post(url, payload);
       if (response.status === 201) navigate("/dashboard");
@@ -69,36 +76,57 @@ export const BookDetails = () => {
           <p>Trip Details</p>
           <div>
             <div className="trip-meta-data">
-              <div>
-                <h3>Lagos</h3>
-                <h3>Abuja</h3>
+              <div className="airport-name">
+                <h3>{flight.slices[0].origin.name}</h3>
+                <h3>&rarr;</h3>
+                <h3>{flight.slices[0].destination.name}</h3>
               </div>
               <div>
-                <p>22 Nov 2022</p>
                 <p>3 Adults 3 Children 2 Infants</p>
               </div>
             </div>
             <div className="journey">
               <span className="journey-type">Departure Journey</span>
-              <div className="airline">
+              <div className="trip-airline">
                 <div className="air-icon">
-                  <img src={plane} alt="plane" />
-                  <p>Dana Air</p>
+                  <p>{flight.slices[0].segments[0].operating_carrier.name}</p>
                 </div>
                 <div className="departure-airline">
-                  <span>22 Nov 22</span>
-                  <h3>Abuja, Nnamdi Azikiwe International Airport</h3>
-                  <span>11:10</span>
+                  <span>
+                    {moment(flight.slices[0].segments[0].departing_at).format(
+                      "YY MMM Do"
+                    )}
+                  </span>
+                  <h3>{flight.slices[0].origin.name}</h3>
+                  <span>
+                    {moment(flight.slices[0].segments[0].departing_at).format(
+                      "h:mm"
+                    )}
+                  </span>
                 </div>
-                <div className="departure-airline">
-                  <span>1hrs 20min</span>
-                  <h3>Abuja, Nnamdi Azikiwe International Airport</h3>
-                  <span>Economy</span>
+                <div className="departure-airline" id="plane">
+                  <div className="plane-duration">
+                    <p>
+                      {flight.slices[0].duration.split("")[2] +
+                        "hr " +
+                        flight.slices[0].duration.slice(4, 5) +
+                        "mins"}
+                    </p>
+                    <img src={plane} alt="plane" />
+                  </div>
                 </div>
                 <div className="return-airline">
-                  <span>22 Nov 22</span>
-                  <h3>Abuja, Nnamdi Azikiwe International Airport</h3>
-                  <span>11:10</span>
+                  <span>
+                    {moment(flight.slices[0].segments[0].arriving_at).format(
+                      "YY MMM Do"
+                    )}
+                  </span>
+                  <h3>{flight.slices[0].destination.name}</h3>
+                  <span>
+                    {moment(flight.slices[0].segments[0].arriving_at).format(
+                      "h:mm"
+                    )}
+                  </span>
                 </div>
               </div>
             </div>
@@ -164,7 +192,9 @@ export const BookDetails = () => {
               </div>
             </form>
           </FormContainer>
-          <CheckoutBtn onClick={handleSubmit}>Book Now</CheckoutBtn>
+          <CheckoutBtn onClick={handleSubmit}>
+            Book Now: ${flight.total_amount}
+          </CheckoutBtn>
         </ContactDetails>
       </BookDetailsContent>
     </BookDetailsContainer>

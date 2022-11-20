@@ -1,4 +1,5 @@
 import moment from "moment";
+import { useNavigate } from "react-router-dom";
 import {
   FlightListContainer,
   FlightListWrapper,
@@ -13,11 +14,23 @@ import {
 } from "./flight-list.styles";
 
 export const FlightList = ({ flights }: any) => {
+  const navigate = useNavigate();
+
+  const selectedFlight = (flight: any) => {
+    localStorage.setItem("selectedFlight", JSON.stringify(flight));
+    navigate(`/offer/${flight.id}`);
+  };
+
   return (
     <FlightListContainer>
       <FlightListWrapper>
         {flights.map((flight: any) => (
-          <FlightCard key={flight.id} to={`/offer/${flight.id}`}>
+          <FlightCard
+            key={flight.id}
+            onClick={() => {
+              selectedFlight(flight);
+            }}
+          >
             <FlightCardHeader>
               <h3>Departure Journey</h3>
               <p>{moment(flight.departure_date).format("MMM Do YYYY")}</p>

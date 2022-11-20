@@ -29,8 +29,11 @@ export const TripDetails = styled.div`
     flex-direction: column;
     margin-top: 15px;
 
-    div {
+    .airport-name {
       display: flex;
+      h3, p {
+        margin-right: 10px;
+      }
     }
   }
 
@@ -48,23 +51,29 @@ export const TripDetails = styled.div`
       margin-top: 10px;
     }
 
-    .airline {
+    .trip-airline {
       display: flex;
       margin-top: 30px;
+      align-items: flex-start;
+      justify-content: space-around;
 
-      .air-icon {
-        width: 25%;
-        padding: 10px;
+      #plane {
         display: flex;
+        justify-content: center;
         align-items: center;
+      }
 
-        img {
-          background: #9f7f7f;
-          border-radius: 50%;
-          width: 40px;
-          height: 40px;
-          object-fit: contain;
-          margin-right: 5px;
+      .plane-duration {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+
+        > p {
+          font-size: 12px;
+          text-transform: capitalize;
+          margin-top: 12px;
         }
       }
     }
@@ -144,8 +153,7 @@ export const CheckoutBtn = styled.button`
   align-items: center;
   justify-content: center;
   border-radius: 10px;
+  border: none;
   outline: none;
   color: #fff;
 `;
-
-
