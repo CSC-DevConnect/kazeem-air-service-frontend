@@ -140,8 +140,10 @@ export const Book = () => {
               </ul>
               <div className="form">
                 <div className="airline">
-                  <label>From:</label>
                   <select name="origin" onChange={handleChange}>
+                    <option disabled selected>
+                      Select Origin:
+                    </option>
                     {airlines &&
                       airlines.map((airline) => (
                         <option key={airline.id} value={airline.iata_code}>
@@ -151,8 +153,10 @@ export const Book = () => {
                   </select>
                 </div>
                 <div className="airline">
-                  <label>To:</label>
                   <select name="destination" onChange={handleChange}>
+                    <option disabled selected>
+                      Select Destination:
+                    </option>
                     {airlines &&
                       airlines.map((airline) => (
                         <option key={airline.id} value={airline.iata_code}>

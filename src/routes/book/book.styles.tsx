@@ -30,7 +30,6 @@ export const BookHero = styled.div`
   p {
     font-size: 1.5rem;
     line-height: 40px;
-
   }
 `;
 
@@ -55,6 +54,7 @@ export const BookBox = styled.div`
 
       span {
         margin: 0 10px;
+        color: #000;
       }
 
       &:last-child {
@@ -107,6 +107,8 @@ export const BookBox = styled.div`
   select {
     border-right: none;
     font-size: 1rem;
+    margin-right: 5px;
+    padding: 10px 0;
   }
 
   option {
