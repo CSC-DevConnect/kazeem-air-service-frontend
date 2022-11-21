@@ -16,9 +16,10 @@ export const Header = ({ currentUser }: any) => {
         <img src={KazeemLogo} alt="logo" />
       </LogoContainer>
       <HeaderItemList>
-        <HeaderItem>
-          <FiSearch />
-        </HeaderItem>
+        <form method="post">
+          <input type="text" className="textbox" placeholder="Search..." />
+          <button title="Search" type="submit" className="button"><FiSearch /></button>
+        </form>
         <HeaderItem>
           {currentUser ? (
             <a href="/dashboard">
