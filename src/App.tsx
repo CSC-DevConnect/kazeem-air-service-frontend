@@ -10,6 +10,7 @@ import {
   SignUp,
 } from "./routes";
 import OwnerRoute from "./routes/about/about.route";
+import Contact from "./routes/contact/contact.route";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/book" element={<Book />} />
           <Route path="/about" element={<OwnerRoute />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="/offer/:id" element={<BookDetails />} />
         </Route>
         <Route path="/signin" element={<SignIn />} />
