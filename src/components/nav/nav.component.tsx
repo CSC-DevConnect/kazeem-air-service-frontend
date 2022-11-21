@@ -22,7 +22,7 @@ export const NavBar = ({ currentUser }: any) => {
           <NavItemLink to="/book">book</NavItemLink>
         </NavItem>
         <NavItem>
-          <NavItemLink to="/#about">about us</NavItemLink>
+          <NavItemLink to="/about">about us</NavItemLink>
         </NavItem>
         <NavItem>
           <NavItemLink to="/#help">help</NavItemLink>

@@ -9,6 +9,7 @@ import {
   SignIn,
   SignUp,
 } from "./routes";
+import OwnerRoute from "./routes/about/about.route";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/book" element={<Book />} />
+          <Route path="/about" element={<OwnerRoute />} />
           <Route path="/offer/:id" element={<BookDetails />} />
         </Route>
         <Route path="/signin" element={<SignIn />} />
