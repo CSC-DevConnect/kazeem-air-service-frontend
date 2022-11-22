@@ -36,13 +36,34 @@ export const SignUp = () => {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
+
+    const password = formValues.password;
+
+    // check if password is less than 8 characters
+    if (password.length < 8) {
+      toast.error("Password must be at least 8 characters long!", {
+        position: "top-right",
+      });
+      return;
+    }
+
+    // check if pasword contains number
+    const hasNumber = /\d/;
+    const hasAlphabet = /[a-zA-Z]/;
+
+    if (!hasNumber.test(password) || !hasAlphabet.test(password)) {
+      toast.error("Password must contain a number!", {
+        position: "top-right",
+      });
+      return;
+    }
+
     try {
-      console.log(formValues)
+      console.log(formValues);
       const url = `${BASE_URL}/auth/register`;
       const response = await axios.post(url, formValues);
-      if (response.status === 201) navigate('/signin')
-    } catch (error) {
-      console.log(error);
+      if (response.status === 201) navigate("/signin");
+    } catch (error: any) {
       toast.error("An error occured!", {
         position: "top-right",
       });
