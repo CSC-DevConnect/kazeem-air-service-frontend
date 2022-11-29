@@ -5,3 +5,4 @@ export * from "./sign-up/sign-up.route";
 export * from './book/book.route'
 export * from './book-details/book-details.route'
 export * from './dashboard/dashboard.route'
+export * from './accessibility/accessibility.route'

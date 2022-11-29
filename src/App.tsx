@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import {
+  Accessibility,
   Book,
   BookDetails,
   Dashboard,
@@ -23,6 +24,7 @@ function App() {
           <Route path="/about" element={<OwnerRoute />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/offer/:id" element={<BookDetails />} />
+          <Route path='/accessibility' element={<Accessibility />} />
         </Route>
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
