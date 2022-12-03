@@ -97,3 +97,33 @@ export const SectionBox = styled.div`
     }
   }
 `;
+
+export const Container = styled.div`
+  padding: 40px;
+`;
+
+export const Text = styled.div`
+  color: #000;
+
+  h2 {
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 32px;
+  }
+
+  p {
+    font-size: 14px;
+    line-height: 24px;
+    text-align: justify;
+    margin-bottom: 20px;
+
+    .data-collection {
+      list-style: disc;
+      margin-left: 30px;
+
+      li {
+        margin: 10px 0;
+      }
+    }
+  }
+`;

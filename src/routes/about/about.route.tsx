@@ -11,12 +11,12 @@ const OwnerRoute = () => {
         <ImageContainer>
           <img src={owner} alt="image" />
           <div>
-            <h4>MEET THE OWNER</h4> <p>KAZEEM QUDUS OLADIMEJI</p>{" "}
-            <span>Visit us today!</span>
+            <h4>MEET THE OWNER</h4>
+            <p>KAZEEM QUDUS OLADIMEJI</p> <span>Visit us today!</span>
           </div>
         </ImageContainer>
         <p>
-          Privacy Statement |{" "}
+          <Link to="/privacy">Privacy Statement </Link> |{" "}
           <Link to="/accessibility">Accessibility Statement</Link>{" "}
         </p>
         <p className="span">

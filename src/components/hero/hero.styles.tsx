@@ -6,6 +6,7 @@ export const HeroContainer = styled.div`
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  opacity: 1;
   height: 80vh;
 `;
 

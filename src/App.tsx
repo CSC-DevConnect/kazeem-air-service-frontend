@@ -7,6 +7,7 @@ import {
   Dashboard,
   Home,
   Navigation,
+  Privacy,
   SignIn,
   SignUp,
 } from "./routes";
@@ -24,7 +25,8 @@ function App() {
           <Route path="/about" element={<OwnerRoute />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/offer/:id" element={<BookDetails />} />
-          <Route path='/accessibility' element={<Accessibility />} />
+          <Route path="/accessibility" element={<Accessibility />} />
+          <Route path="/privacy" element={<Privacy />} />
         </Route>
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
