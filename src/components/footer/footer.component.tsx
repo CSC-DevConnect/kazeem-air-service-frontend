@@ -65,13 +65,13 @@ export const Footer = () => {
         <FooterList>
           <FooterListHeading>terms</FooterListHeading>
           <FooterListItem>
-            <FooterLink>privacy policy</FooterLink>
+            <FooterLink href="/privacy">privacy policy</FooterLink>
           </FooterListItem>
           <FooterListItem>
             <FooterLink>terms of use</FooterLink>
           </FooterListItem>
           <FooterListItem>
-            <FooterLink>accessibility</FooterLink>
+            <FooterLink href="/accessibility">accessibility</FooterLink>
           </FooterListItem>
         </FooterList>
       </FooterWrapper>

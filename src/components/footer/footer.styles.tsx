@@ -44,4 +44,5 @@ export const FooterListHeading = styled.h3`
 
 export const FooterLink = styled.a`
   cursor: pointer;
+  color: #fff;
 `;
